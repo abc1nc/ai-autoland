@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-11-03 15:03+0900\n"
+"POT-Creation-Date: 2025-11-03 22:21+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,6 +52,9 @@ msgstr ""
 msgid "Executed merge process"
 msgstr ""
 
+msgid "Interval in seconds between PR processing attempts."
+msgstr ""
+
 msgid ""
 "Language used by coding agents (e.g., ja_JP, en_GB). Defaults to OS "
 "settings if omitted."
@@ -86,8 +89,19 @@ msgstr ""
 msgid "Starting to wait for checks completion"
 msgstr ""
 
+msgid "Too many consecutive failures. Manual intervention required."
+msgstr ""
+
 #, python-format
 msgid "Waiting %s seconds after push before starting checks completion wait"
+msgstr ""
+
+#, python-format
+msgid "Waiting %s seconds before retry."
+msgstr ""
+
+#, python-format
+msgid "Waiting %s seconds before searching for next PR"
 msgstr ""
 
 msgid "git push was rejected"

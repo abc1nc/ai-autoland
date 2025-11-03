@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-03 15:03+0900\n"
+"POT-Creation-Date: 2025-11-03 22:21+0900\n"
 "PO-Revision-Date: 2025-11-02 22:56+0900\n"
 "Last-Translator: dev <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -53,6 +53,9 @@ msgstr "詳細ログを出力する。"
 msgid "Executed merge process"
 msgstr "マージ処理を実行しました"
 
+msgid "Interval in seconds between PR processing attempts."
+msgstr "PR処理試行の間隔(秒)。"
+
 msgid "Language used by coding agents (e.g., ja_JP, en_GB). Defaults to OS settings if omitted."
 msgstr "コーディングエージェントが使う言語 (例: ja_JP, en_GB)。省略時は OS の設定に従う。"
 
@@ -85,9 +88,20 @@ msgstr "対象リポジトリを指定する (例: owner/repo)。"
 msgid "Starting to wait for checks completion"
 msgstr "checks 完了待ちを開始します"
 
+msgid "Too many consecutive failures. Manual intervention required."
+msgstr "連続失敗回数が上限に達しました。手動での対応が必要です。"
+
 #, python-format
 msgid "Waiting %s seconds after push before starting checks completion wait"
 msgstr "Push 後 %s 秒待機してから checks 完了待ちを開始します"
+
+#, python-format
+msgid "Waiting %s seconds before retry."
+msgstr "%s秒後にリトライします。"
+
+#, python-format
+msgid "Waiting %s seconds before searching for next PR"
+msgstr "%s秒後に次のPRを検索します。"
 
 msgid "git push was rejected"
 msgstr "git push が拒否されました"

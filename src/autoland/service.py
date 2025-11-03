@@ -142,6 +142,35 @@ class AutolandService:
                 self.log_pr(logging.WARNING, pr_number, _("Agent indicated corrections but no changes detected"))
                 # Continue loop anyway to let agent reassess
 
+    def execute_watch(self, interval: int = 300) -> None:
+        """
+        Execute autoland process continuously, monitoring for new PRs.
+
+        Args:
+            interval: Interval in seconds between PR processing attempts
+        """
+        consecutive_failures = 0
+        max_consecutive_failures = 10
+
+        while True:
+            try:
+                self.execute()
+                consecutive_failures = 0
+                self.logger.info(_("Waiting %s seconds before searching for next PR"), interval)
+            except KeyboardInterrupt:
+                break
+            except Exception as error:  # pylint: disable=broad-exception-caught
+                consecutive_failures += 1
+
+                if consecutive_failures >= max_consecutive_failures:
+                    self.logger.error(_("Too many consecutive failures. Manual intervention required."))
+                    raise
+
+                self.logger.error("%r", error)
+                self.logger.error(_("Waiting %s seconds before retry."), interval)
+
+            time.sleep(interval)
+
     def fetch_oldest_open_pr_number(self) -> Optional[int]:
         """
         Get the minimum numbered PR from the list of open PRs.
