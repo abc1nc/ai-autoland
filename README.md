@@ -1,16 +1,38 @@
 English | [日本語](./README.ja.md)
 
-# autoland
+# Autoland
 
-A CLI tool that automatically fixes and merges GitHub PRs using AI agents
+A CLI tool that automates the fix and merge workflow after creating PRs with Vibe Coding.
 
-## Features
+## Overview
 
+AI Autoland fully automates the post-review workflow for pull requests. When you integrate AI review tools like CodeRabbit or Claude Code Review into your CI, it automatically fixes the review feedback and executes the merge.
+
+## Key Features
+
+- Automatic Fixes: Automatically fixes review feedback using Codex or Claude Code
+- Automatic Merge: Automatically merges after fixes are completed
 - Automatic detection and processing of open PRs
 - Waiting for GitHub checks completion
-- Automatic fixes for review comments using AI agents
 - Automatic commit and push of fixes
 - Automatic merge decision and execution
+- Two Operation Modes:
+  - Single Mode: Processes only one PR
+  - Watch Mode: Continuously monitors and processes new PRs
+
+## Prerequisites
+
+- An AI code review tool (CodeRabbit, Claude Code Review, etc.) must be running in your CI
+- Designed for use with Vibe Coding
+- `gh` (GitHub CLI)
+- `claude` or `codex` command
+- Execution in a Git repository
+
+## Notes
+
+- This tool does not include code review functionality. It must be used in combination with external CI review tools
+- The free public version does not include code quality improvement features
+- If you need code quality improvement features, please use the commercial version that will be released in the future
 
 ## Installation
 
@@ -20,13 +42,6 @@ pipx install autoland
 
 Please refer to <https://pipx.pypa.io/latest/installation/> for pipx installation.
 
-## Prerequisites
-
-The following tools must be set up:
-
-- `gh` (GitHub CLI)
-- `codex` command (AI coding tool)
-- Execution in a Git repository
 
 ## Usage
 
