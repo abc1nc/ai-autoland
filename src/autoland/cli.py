@@ -124,5 +124,34 @@ def debug(ctx, pr_number: int, repo: str) -> None:
         raise click.Abort()
 
 
+@cli.command()
+@click.option(
+    "--watch-interval",
+    type=int,
+    default=300,
+    show_default=True,
+    help=_("Interval in seconds between PR processing attempts."),
+)
+@click.pass_context
+def watch(ctx, watch_interval: int) -> None:
+    """
+    Continuously monitor and process pull requests.
+
+    This command runs in a loop, processing PRs as they become available
+    and waiting for new ones when the queue is empty.
+    """
+    try:
+        service = AutolandService(**ctx.obj)
+        service.execute_watch(interval=watch_interval)
+    except subprocess.CalledProcessError as error:
+        click.echo(f"Command failed: {' '.join(error.cmd)}", err=True)
+        if error.stderr:
+            click.echo(f"Error: {error.stderr}", err=True)
+        raise click.Abort()
+    except Exception as error:
+        click.echo(f"Unexpected error: {error}", err=True)
+        raise click.Abort()
+
+
 if __name__ == "__main__":
     cli()
