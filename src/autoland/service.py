@@ -43,6 +43,7 @@ class AutolandService:
         locale: Optional[str] = None,
         repo: Optional[str] = None,
         verbose: bool = False,
+        create_issue: bool = True,
         **_kwargs
     ) -> None:
         level = logging.DEBUG if verbose else logging.INFO
@@ -55,6 +56,7 @@ class AutolandService:
         self.agent = agent
         self.polling_interval = polling_interval
         self.repo = repo
+        self.create_issue = create_issue
 
         if locale:
             locale_module.setlocale(locale_module.LC_ALL, locale)
@@ -392,8 +394,20 @@ class AutolandService:
         payload_lines = [
             f"Regardless of the language of this prompt, you must respond in the language specified by this locale: {self.locale}.",
             "",
-            prompt_body,
         ]
+
+        if self.create_issue:
+            payload_lines.extend([
+                "AUTHORIZATION: You are authorized to create GitHub issues using `gh issue create` when you identify out-of-scope problems that require follow-up in separate PRs.",
+                "",
+            ])
+        else:
+            payload_lines.extend([
+                "AUTHORIZATION: You are NOT authorized to create GitHub issues. Do not use `gh issue create` command.",
+                "",
+            ])
+
+        payload_lines.append(prompt_body)
         for block in context_blocks:
             if block:
                 payload_lines.append("")

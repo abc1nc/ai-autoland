@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-11-03 22:21+0900\n"
+"POT-Creation-Date: 2025-11-04 15:04+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,6 +47,9 @@ msgid "Could not retrieve information for PR #{number}"
 msgstr ""
 
 msgid "Enable verbose logging."
+msgstr ""
+
+msgid "Enable/disable GitHub issue creation for problems outside the PR's scope."
 msgstr ""
 
 msgid "Executed merge process"
