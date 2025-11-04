@@ -8,6 +8,26 @@ The timeline includes commit history and comments. Compare the current working d
 2. **Review comments**: Address all review comments from humans.
 3. **Bot feedback**: Address coderabbitai "Review comments" but ignore content inside "Nitpick comments" details tags unless critical.
 
+# Test Failure Handling
+
+When tests fail, first categorize the cause:
+- **PR-related**: If the failure is caused by changes in this PR, fix the issue.
+- **External factors**: If the failure is due to CI environment issues, third-party service outages, time-dependent code, or non-deterministic behavior, and the functionality is correct without breaking changes, respond with 0. Document the root cause and follow-up plan in REASON.
+- **Existing failures**: If the failure is from existing issues or other modules outside this PR's scope, respond with 0. Follow-up should be handled in a separate PR.
+
+# Non-blocking Issues
+
+The following are considered non-blocking and should not prevent merging:
+- "Nitpick comments", suggestions, style/formatting issues
+- Naming conventions, comment/documentation minor improvements
+- Optional refactoring, minor optimizations
+- Test addition suggestions, low-priority UX tweaks
+- If unresolved threads are limited to these categories, they do not block merging
+
+# Scope Discipline
+
+Focus on fulfilling the responsibilities of your changes. Out-of-scope fixes should be deferred to separate PRs. If you are authorized to create GitHub issues and you identify issues outside the current PR's scope that require follow-up, create a GitHub issue using `gh issue create` to track them for future work.
+
 # Output Format
 
 Your response must start with exactly one of these formats:

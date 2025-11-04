@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-03 22:21+0900\n"
+"POT-Creation-Date: 2025-11-04 15:04+0900\n"
 "PO-Revision-Date: 2025-11-02 22:56+0900\n"
 "Last-Translator: dev <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -49,6 +49,9 @@ msgstr "PR #{number} の情報を取得できませんでした"
 
 msgid "Enable verbose logging."
 msgstr "詳細ログを出力する。"
+
+msgid "Enable/disable GitHub issue creation for problems outside the PR's scope."
+msgstr "PRの範囲外の問題に対するGitHub issue作成を有効/無効にする。"
 
 msgid "Executed merge process"
 msgstr "マージ処理を実行しました"

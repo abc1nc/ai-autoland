@@ -54,8 +54,14 @@ def run_autoland(**kwargs):
     show_default=True,
     help=_("Coding agent to use."),
 )
+@click.option(
+    "--create-issue/--no-create-issue",
+    default=True,
+    show_default=True,
+    help=_("Enable/disable GitHub issue creation for problems outside the PR's scope."),
+)
 @click.pass_context
-def cli(ctx, verbose: bool, locale: str, polling_interval: int, agent: str):
+def cli(ctx, verbose: bool, locale: str, polling_interval: int, agent: str, create_issue: bool):
     """
     Automatically land pull requests after GitHub Actions checks pass.
 
@@ -68,6 +74,7 @@ def cli(ctx, verbose: bool, locale: str, polling_interval: int, agent: str):
     ctx.obj['locale'] = locale
     ctx.obj['polling_interval'] = polling_interval
     ctx.obj['agent'] = agent
+    ctx.obj['create_issue'] = create_issue
 
     if ctx.invoked_subcommand is None:
         run_autoland(**ctx.obj)

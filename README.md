@@ -66,6 +66,7 @@ flowchart TD
     A1["Analyze context"]
     A2{"Are there any issues?"}
     A3["Implement necessary fixes and commit"]
+    A5["Create issues for out-of-scope problems<br>(if --create-issue enabled)"]
     A4_fix["Output result report (fix details)"]
     A4_ok["Output result report (no issues)"]
     A_OUT["Report"]
@@ -76,8 +77,8 @@ flowchart TD
   C0 -- No --> End(["End"])
 
   C2 --> C3 --> A1 --> A2
-  A2 -- Yes --> A3 --> A4_fix --> A_OUT
-  A2 -- No --> A4_ok --> A_OUT
+  A2 -- Yes --> A3 --> A5 --> A4_fix --> A_OUT
+  A2 -- No --> A5 --> A4_ok --> A_OUT
 
   A_OUT --> C6
 
