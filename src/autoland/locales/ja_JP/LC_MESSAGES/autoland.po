@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-04 15:04+0900\n"
-"PO-Revision-Date: 2025-11-02 22:56+0900\n"
+"POT-Creation-Date: 2025-11-23 22:07+0900\n"
+"PO-Revision-Date: 2025-11-23 22:08+0900\n"
 "Last-Translator: dev <EMAIL@ADDRESS>\n"
 "Language: ja\n"
 "Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
@@ -95,6 +95,10 @@ msgid "Too many consecutive failures. Manual intervention required."
 msgstr "連続失敗回数が上限に達しました。手動での対応が必要です。"
 
 #, python-format
+msgid "Unknown agent: %s"
+msgstr "未知のエージェント: %s"
+
+#, python-format
 msgid "Waiting %s seconds after push before starting checks completion wait"
 msgstr "Push 後 %s 秒待機してから checks 完了待ちを開始します"
 
@@ -108,4 +112,3 @@ msgstr "%s秒後に次のPRを検索します。"
 
 msgid "git push was rejected"
 msgstr "git push が拒否されました"
-
