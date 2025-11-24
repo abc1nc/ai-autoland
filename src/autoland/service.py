@@ -22,8 +22,21 @@ class AutolandService:
     LONG_HTML_COMMENT_PATTERN = re.compile(r'<!--.{100,}?-->')
 
     GH_COMMAND = "gh"
-    CODEX_COMMAND = "codex"
-    CLAUDE_COMMAND = "claude"
+
+    AGENT_CONFIGS = {
+        "codex": {
+            "command": "codex",
+            "args": ["exec", "--dangerously-bypass-approvals-and-sandbox", "-"],
+        },
+        "claude": {
+            "command": "claude",
+            "args": ["--print", "--dangerously-skip-permissions"],
+        },
+        "gemini": {
+            "command": "gemini",
+            "args": ["--yolo"],
+        },
+    }
 
     def load_prompt(self, filename: str) -> str:
         """
@@ -416,10 +429,11 @@ class AutolandService:
                 payload_lines.append(block)
         payload = "\n".join(payload_lines)
 
-        if self.agent == "claude":
-            command = [self.CLAUDE_COMMAND, "--print", "--dangerously-skip-permissions"]
-        else:
-            command = [self.CODEX_COMMAND, "exec", "--dangerously-bypass-approvals-and-sandbox", "-"]
+        if self.agent not in self.AGENT_CONFIGS:
+            raise AutolandError(_("Unknown agent: %s") % self.agent)
+
+        agent_config = self.AGENT_CONFIGS[self.agent]
+        command = [agent_config["command"]] + agent_config["args"]
 
         result = subprocess.run(
             command,

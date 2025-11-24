@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-11-04 15:04+0900\n"
+"POT-Creation-Date: 2025-11-23 22:07+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,6 +93,10 @@ msgid "Starting to wait for checks completion"
 msgstr ""
 
 msgid "Too many consecutive failures. Manual intervention required."
+msgstr ""
+
+#, python-format
+msgid "Unknown agent: %s"
 msgstr ""
 
 #, python-format

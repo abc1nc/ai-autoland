@@ -49,7 +49,7 @@ def run_autoland(**kwargs):
 )
 @click.option(
     "--agent",
-    type=click.Choice(["codex", "claude"]),
+    type=click.Choice(list(AutolandService.AGENT_CONFIGS.keys())),
     default="codex",
     show_default=True,
     help=_("Coding agent to use."),
