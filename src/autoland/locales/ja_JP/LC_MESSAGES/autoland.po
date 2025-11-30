@@ -122,4 +122,3 @@ msgstr "%s秒後に次のPRを検索します。"
 
 msgid "git push was rejected"
 msgstr "git push が拒否されました"
-
