@@ -109,6 +109,10 @@ class AutolandService:
 
         self.checkout_pr(pr_number)
 
+        project_instructions = self.load_project_instructions()
+        if project_instructions:
+            self.log_pr(logging.INFO, pr_number, _("Loaded project instructions from autoland.md"))
+
         while True:
             self.log_pr(logging.INFO, pr_number, _("Starting to wait for checks completion"))
             self.wait_for_checks_completion(pr_number)
@@ -116,10 +120,15 @@ class AutolandService:
             pr_data = self.fetch_pr_data(pr_number)
             timeline = self.format_pr_timeline(pr_data)
 
+            context_blocks = []
+            if project_instructions:
+                context_blocks.append("Project-specific instructions from autoland.md:\n" + project_instructions)
+            context_blocks.append(timeline)
+
             self.log_pr(logging.INFO, pr_number, _("Sending review correction prompt to %s (this may take some time)"), self.agent)
             agent_response = self.invoke_agent_with_prompt(
                 prompt_body=self.load_prompt("review_correction.txt"),
-                context_blocks=[timeline],
+                context_blocks=context_blocks,
             )
 
             if agent_response is None:
@@ -351,6 +360,38 @@ class AutolandService:
             check=True,
         )
         return result.stdout.strip()
+
+    def get_repo_root(self) -> Path:
+        """
+        Get the absolute path to the repository root directory.
+        """
+        result = subprocess.run(
+            ["git", "rev-parse", "--show-toplevel"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        return Path(result.stdout.strip())
+
+    def load_project_instructions(self) -> Optional[str]:
+        """
+        Load project-specific instructions from autoland.md in the repository root.
+        """
+        autoland_path = self.get_repo_root() / "autoland.md"
+        if not autoland_path.exists():
+            return None
+
+        try:
+            content = autoland_path.read_text(encoding="utf-8").strip()
+        except OSError as error:  # pragma: no cover - filesystem error handling
+            self.logger.warning(_("Could not read %s: %s"), str(autoland_path), error)
+            return None
+
+        if not content:
+            self.logger.info(_("Found autoland.md but it is empty; ignoring content"))
+            return None
+
+        return content
 
     def merge_comments(self, issue_comments: List[Dict], review_comments: List[Dict]) -> List[Dict]:
         """
