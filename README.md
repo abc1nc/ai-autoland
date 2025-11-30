@@ -51,6 +51,10 @@ Run in the target repository directory:
 autoland
 ```
 
+## Repository-specific instructions
+
+Place an `AUTOLAND.md` file in the target repository to share project-specific guidance (coding standards, edge cases, required checks, etc.). Its content is passed to the coding agent together with the review context when requesting fixes.
+
 ## Workflow
 
 1. **PR Detection**: Selects the oldest open PR and checks out to the corresponding branch

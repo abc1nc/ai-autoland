@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 22:07+0900\n"
+"POT-Creation-Date: 2025-12-04 20:33+0900\n"
 "PO-Revision-Date: 2025-11-23 22:08+0900\n"
 "Last-Translator: dev <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -43,6 +43,10 @@ msgstr "使用するコーディングエージェント。"
 msgid "Could not get response from {agent}"
 msgstr "{agent} からの応答が確認できませんでした"
 
+#, python-format
+msgid "Could not read %s: %s"
+msgstr "%s を読み込めませんでした: %s"
+
 #, python-brace-format
 msgid "Could not retrieve information for PR #{number}"
 msgstr "PR #{number} の情報を取得できませんでした"
@@ -61,6 +65,9 @@ msgstr "PR処理試行の間隔(秒)。"
 
 msgid "Language used by coding agents (e.g., ja_JP, en_GB). Defaults to OS settings if omitted."
 msgstr "コーディングエージェントが使う言語 (例: ja_JP, en_GB)。省略時は OS の設定に従う。"
+
+msgid "Loaded project instructions from AUTOLAND.md"
+msgstr "AUTOLAND.md からプロジェクト指示を読み込みました"
 
 msgid "No open pull requests found. Terminating process."
 msgstr "Openなプルリクエストが見つかりませんでした。処理を終了します。"
@@ -112,3 +119,4 @@ msgstr "%s秒後に次のPRを検索します。"
 
 msgid "git push was rejected"
 msgstr "git push が拒否されました"
+

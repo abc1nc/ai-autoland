@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-11-23 22:07+0900\n"
+"POT-Creation-Date: 2025-12-04 20:33+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,6 +42,10 @@ msgstr ""
 msgid "Could not get response from {agent}"
 msgstr ""
 
+#, python-format
+msgid "Could not read %s: %s"
+msgstr ""
+
 #, python-brace-format
 msgid "Could not retrieve information for PR #{number}"
 msgstr ""
@@ -61,6 +65,9 @@ msgstr ""
 msgid ""
 "Language used by coding agents (e.g., ja_JP, en_GB). Defaults to OS "
 "settings if omitted."
+msgstr ""
+
+msgid "Loaded project instructions from AUTOLAND.md"
 msgstr ""
 
 msgid "No open pull requests found. Terminating process."
