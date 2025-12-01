@@ -352,6 +352,35 @@ class AutolandService:
         )
         return result.stdout.strip()
 
+    def get_default_branch(self) -> str:
+        """
+        Get the default branch name of the target repository.
+        """
+        cmd = [
+            self.GH_COMMAND,
+            "repo",
+            "view",
+            "--json",
+            "defaultBranchRef",
+            "--jq",
+            ".defaultBranchRef.name",
+        ]
+        if self.repo:
+            cmd.extend(["--repo", self.repo])
+
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        default_branch = result.stdout.strip()
+
+        if not default_branch:
+            raise AutolandError(_("Could not determine default branch name"))
+
+        return default_branch
+
     def merge_comments(self, issue_comments: List[Dict], review_comments: List[Dict]) -> List[Dict]:
         """
         Merge issue comments and review comments in chronological order with unified format.
@@ -630,3 +659,28 @@ class AutolandService:
             "--squash",
         ], check=True)
         self.log_pr(logging.INFO, pr_number, _("Executed merge process"))
+        self.checkout_default_branch_and_pull(pr_number)
+
+    def checkout_default_branch_and_pull(self, pr_number: int) -> None:
+        """
+        Checkout the default branch and pull the latest changes after a merge.
+        """
+        default_branch = self.get_default_branch()
+
+        self.log_pr(logging.INFO, pr_number, _("Checking out %s branch after merge"), default_branch)
+        subprocess.run(
+            ["git", "checkout", default_branch],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+
+        self.log_pr(logging.INFO, pr_number, _("Pulling latest changes for %s"), default_branch)
+        subprocess.run(
+            ["git", "pull", "origin", default_branch],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+
+        self.log_pr(logging.INFO, pr_number, _("Updated local %s branch after merge"), default_branch)

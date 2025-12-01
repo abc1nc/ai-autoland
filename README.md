@@ -59,6 +59,7 @@ autoland
 4. **Push Changes**: Commits fixes and posts a processing report as a comment
 5. **Re-check**: Checks for new comments and determines merge eligibility
 6. **Execute Merge**: Automatically merges if there are no issues
+7. **Sync Main**: Checks out the default branch (e.g., `main`) and pulls the latest changes
 
 ```mermaid
 flowchart TD
@@ -74,6 +75,7 @@ flowchart TD
     C4{"Did agent add commits?"}
     C5["push"]
     C8["Merge PR"]
+    C9["Checkout default branch<br>and pull latest"]
   end
 
   subgraph AG["Coding Agent"]
@@ -98,7 +100,7 @@ flowchart TD
   A_OUT --> C6
 
   C6 --> C4
-  C4 -- No (mergeable) --> C8 --> End
+  C4 -- No (mergeable) --> C8 --> C9 --> End
   C4 -- Yes (has changes to push) --> C5 --> C2
 ```
 

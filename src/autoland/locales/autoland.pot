@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-11-23 22:07+0900\n"
+"POT-Creation-Date: 2025-12-01 10:32+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,10 @@ msgstr ""
 msgid "All checks completed"
 msgstr ""
 
+#, python-format
+msgid "Checking out %s branch after merge"
+msgstr ""
+
 msgid "Checking out branch"
 msgstr ""
 
@@ -36,6 +40,9 @@ msgid "Checkout completed"
 msgstr ""
 
 msgid "Coding agent to use."
+msgstr ""
+
+msgid "Could not determine default branch name"
 msgstr ""
 
 #, python-brace-format
@@ -75,6 +82,10 @@ msgstr ""
 msgid "Prompt file not found"
 msgstr ""
 
+#, python-format
+msgid "Pulling latest changes for %s"
+msgstr ""
+
 msgid "Pushed changes"
 msgstr ""
 
@@ -97,6 +108,10 @@ msgstr ""
 
 #, python-format
 msgid "Unknown agent: %s"
+msgstr ""
+
+#, python-format
+msgid "Updated local %s branch after merge"
 msgstr ""
 
 #, python-format
