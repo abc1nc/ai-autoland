@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-23 22:07+0900\n"
+"POT-Creation-Date: 2025-12-01 10:32+0900\n"
 "PO-Revision-Date: 2025-11-23 22:08+0900\n"
 "Last-Translator: dev <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -30,6 +30,10 @@ msgstr "エージェントから空のレポートが返されました。コメ
 msgid "All checks completed"
 msgstr "全てのchecksが完了しました"
 
+#, python-format
+msgid "Checking out %s branch after merge"
+msgstr "マージ後に %s ブランチへcheckoutします"
+
 msgid "Checking out branch"
 msgstr "ブランチをcheckoutします"
 
@@ -38,6 +42,9 @@ msgstr "checkoutが完了しました"
 
 msgid "Coding agent to use."
 msgstr "使用するコーディングエージェント。"
+
+msgid "Could not determine default branch name"
+msgstr "デフォルトブランチ名を取得できませんでした"
 
 #, python-brace-format
 msgid "Could not get response from {agent}"
@@ -74,6 +81,10 @@ msgstr "レポートコメントを投稿しました"
 msgid "Prompt file not found"
 msgstr "プロンプトファイルが見つかりません"
 
+#, python-format
+msgid "Pulling latest changes for %s"
+msgstr "%s ブランチの最新変更を取得します"
+
 msgid "Pushed changes"
 msgstr "変更を push しました"
 
@@ -97,6 +108,10 @@ msgstr "連続失敗回数が上限に達しました。手動での対応が必
 #, python-format
 msgid "Unknown agent: %s"
 msgstr "未知のエージェント: %s"
+
+#, python-format
+msgid "Updated local %s branch after merge"
+msgstr "マージ後にローカルの %s ブランチを更新しました"
 
 #, python-format
 msgid "Waiting %s seconds after push before starting checks completion wait"
