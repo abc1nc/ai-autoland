@@ -1,6 +1,6 @@
 [project]
 name = "autoland"
-version = "0.2.0"
+version = "0.3.0"
 description = "A CLI tool that automatically fixes and merges GitHub PRs using AI agents"
 authors = [
     {name = "abc inc.", email = "oss@abckk.dev"}
